@@ -295,7 +295,20 @@ namespace Bank_Database
                 }
             }
 
-        
+            //checks to see if data isnt already in array or out of space
+            for (regX = 0; regX <= 50; regX++)
+            {
+                if (registration[regX, 0] == tempUser && registration[regX, 1] == tempPass)
+                {
+                    validate = 1;
+                    regX = 51;
+                }
+                else
+                {
+                    Console.SetCursorPosition(3, 17);
+                    Console.WriteLine("DatabaseError, array out of space.");
+                }
+            }
 
             Console.SetCursorPosition(3, 19);
             Console.WriteLine("{0} {1}, Details Captured", registration[0, 0], registration[0, 1]);
