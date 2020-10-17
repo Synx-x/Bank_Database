@@ -15,9 +15,15 @@ namespace Bank_Database
             int y;
             int validate = 0;
 
-            //Login variable
+            //Registration variable
             //50 usernames, 50 passwords
-            string[,] Login = new string[50, 50];
+            string[,] registration = new string[50, 2];
+            string tempUser="";
+            string tempPass="";
+
+            int regX;
+            int regY;
+
 
             //loading screen
             for(int i=0; i<=3; i++)
@@ -218,10 +224,13 @@ namespace Bank_Database
                 Console.SetCursorPosition(3, 7);
                 int response = Convert.ToInt32(Console.ReadLine());
 
-                if(response == 1 || response == 2)
+                if(response == 1)
                 {
                     validate = 1;
                
+                }else if(response == 2)
+                {
+                    validate = 2;
                 }
                 else
                 {
@@ -232,9 +241,66 @@ namespace Bank_Database
 
             } while (validate == 0);
 
-            //Registration UI
+            if (validate == 1)
+            {
 
-            
+            }
+            else if (validate == 2)
+            {
+                //Registration UI
+                Console.Clear();
+
+                Console.SetCursorPosition(3, 1);
+                Console.WriteLine("**Registration Page**");
+
+                Console.SetCursorPosition(3, 5);
+                Console.Write("Enter your username: ");
+                tempUser = Console.ReadLine();
+                Console.SetCursorPosition(3, 7);
+                Console.Write("Enter your Password: ");
+                tempPass = Console.ReadLine();
+
+               
+            }
+
+            //username validation
+            for( regX=0; regX <= 50; regX++)
+            {
+                regY = 1;
+                
+                if(registration [regX, 0] == null)
+                {
+                    registration[regX, 0] == tempUser;
+                    regX = 51;
+                }
+                else
+                {
+
+                }
+            }
+
+            //password validation
+            for (regX = 0; regX <= 50; regX++)
+            {
+                regY = 1;
+
+                if (registration[regX, 1] == null)
+                {
+                    registration[regX, 1] == tempPass;
+                    regX = 51;
+                }
+                else
+                {
+
+                }
+            }
+
+        
+
+            Console.SetCursorPosition(3, 19);
+            Console.WriteLine("{0} {1}, Details Captured", registration[0, 0], registration[0, 1]);
+            Console.ReadLine();
+
         }
     }
 }
